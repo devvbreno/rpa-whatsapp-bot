@@ -1,0 +1,15 @@
+env/
+venve/
+
+__pycache__/
+*.__pycache__
+*.pyc
+
+sessao_whatsapp/
+
+.env
+credentials.json
+
+*.csv
+*.xlsx
+# data/
