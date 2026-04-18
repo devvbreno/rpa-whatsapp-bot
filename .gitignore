@@ -9,6 +9,7 @@ sessao_whatsapp/
 
 .env
 credentials.json
+config/credentials.json
 
 *.csv
 *.xlsx
