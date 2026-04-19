@@ -1,5 +1,6 @@
 import os 
-import panda 
+import pandas as pd
+import pandas
 import time
 
 def load_data(file_path: str) -> pd.DataFrame:
@@ -21,8 +22,17 @@ def load_data(file_path: str) -> pd.DataFrame:
         return None
     
     new_columns = ['Status', 'WhatsApp_Link', 'Last_Contact','Follow_up','Notes:']
-    for col in df.columns:
-        df['WhatsApp'] = df['WhatsApp'].str.replace(r'\.0$', '', regex=True)
+    for col in new_columns:
+        if col not in df.columns:
+            df[col] = ""
+    
+    text_columns = ['Notes', 'Status', 'WhatsApp_Link', 'Refusal_Reason', 'WhatsApp']
+    for col in text_columns:
+        if col in df.columns: 
+            df[col] = df[col].astype(str).replace('nan', '')
+    
+    if 'WhatsApp' in df.columns:
+        df['WhatsApp'] = df['WhatsApp'].astype(str).str.replace(r'\.0$', '', regex=True)
         
     return df
 
